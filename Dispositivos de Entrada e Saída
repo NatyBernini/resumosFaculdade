@@ -1,0 +1,250 @@
+DISPOSITIVOS DE ENTRADA E SAÍDA
+
+DISPOSITIVOS DE ENTRADA:
+Permitem a entrada de dados no sistema, como teclado, mouse, scanner, microfone, webcam...
+
+DISPOSITIVOS DE SAÍDA:
+Exibem ou comunicam os resultados processados de volta ao usuário, como monitor, impressora, alto-falantes...
+
+DISPOSITIVOS HÍBRIDOS: 
+Combinam características de dispositivos de entrada e saída em um único dispositivo, muitas vezes proporcionando uma experiência mais integrada e versátil para o usuário, como telas sensíveis ao toque (Touchscreens), canetas digitais...
+
+COMO UM DISPOSITIVO DE E/S FUNCIONA?
+Além do processador e da memória, também é necessário possuir os módulos de entrada e saída, pois é através dela que acontece a conexão do dispositivo (E/S) com o sistema.
+
+FUNCIONAMENTO:
+- Cada módulo de E/S se conecta ao barramento ou comutador central e controla um ou mais periféricos;
+- Um módulo de E/S contém uma lógica para realizar uma função de comunicação entre o periférico e o barramento;
+
+PORQUE OS PERIFÉRICOS NÃO SÃO CONECTADOS DIRETAMENTE NO BARRAMENTO DO SISTEMA?
+- Existe uma grande variedade de periféricos, com diversos métodos de operação, inviabilizando o controle pelo processador;
+- A taxa de transferência de dados dos periféricos normalmente é diferente (mais lenta ou mais rápida) do que a da memória ou do processador;
+- Os periféricos normalmente utilizam formatos de dados e tamanhos de palavras diferentes do que é usado pelo computador ao qual estão conectados;
+
+PRINCIPAIS FUNÇÕES:
+- Interface com o processador e a memória por meio do barramento do sistema ou comutador central;
+- Interface com um ou mais dispositivos periféricos por conexões de dados adequadas;
+
+FUNÇÕES DE UM MÓDULO DE E/S:
+1 - CONTROLE E TEMPORIZAÇÃO:
+- o processador interroga o módulo de E/S para verificar o estado do dispositivo;
+- o módulo retorna o estado do dispositivo;
+- se o dispositivo estiver em operação e pronto para transmitir dados, o processador requisitará a transferência enviando um comando para o módulo de E/S;
+- o módulo de E/S obtém uma unidade de dados do dispositivo;
+- os dados são transferidos do módulo de E/S para o processador;
+
+2 - COMUNICAÇÃO COM O PROCESSADOR:
+- Decodificação de comandos: conversão entre sinais transmitidos através do barramento de controle e comandos usados pelos dispositivos;
+- Dados: são transferidos entre o processador e o módulo de E/S através do barramento de dados;
+- Informação de estado: lentidão dos periféricos faz com que seja importante conhecer o estado do módulo de E/S;
+
+- Reconhecimento de endereço: o módulo de E/s deve reconhecer um endereço distinto para cada periférico controlado;
+
+3 - BUFFERING DE DADOS:
+- A transferência de dados de memória principal para o módulo de E/S é feita rapidamente, pois esses dados são temporariamente armazenados no módulo de E/S e então enviados para o dispositivo numa taxa adequada.
+
+- No caminho oposto, os dados são armazenados temporariamente  no módulo de E/S para não reter a memória numa transferência de dados com baixa velocidade;
+
+- O  módulo de E/S deve ser capaz de realizar operações tanto à velocidade da memória quanto à do dispositivo externo.
+
+4 - DETECÇÃO DE ERROS:
+Relatar erros ao processador, como falha de alimentação de papel, papel emperrado, trilha de disco defeituosa, etc...
+
+
+
+E/S PROGRAMADA:
+- Em um programa, a execução de uma instrução relacionada a E/S faz com que um comando seja enviado para o módulo de E/S;
+
+- O módulo de E/S executa a operação requisitada e sinaliza o seu término carregando um valor no registrador de estado;
+
+- Nenhuma ação é executada pelo módulo para alertar o processador sobre o término da operação;
+
+- É responsabilidade do processador verificar periodicamente o estado do módulo, para ver se a operação foi completada;
+
+E/S CONTROLADA POR INTERRUPÇÃO:
+- Processador envia um comando de E/S para o módulo e continua a executar outras instruções;
+
+- O módulo de E/S interrompe o processador quando o mesmo estiver pronto para trocar dados;
+
+- Processador efetua a transferência de dados e depois retorna ao seu processamento original;
+
+- É mais eficiente que a E/S programada, pois elimina ciclos de espera desnecessários;
+
+ONDE ENTRA O SO NESSA HISTÓRIA?
+O SO que provoca uma interrupção é geralmente o responsável pelo gerenciamento das interrupções em um computador. No SO mais mordernos (Windows, Linux e macOS) , a gestão de interrupções é uma função do kernel do SO.
+
+COMO OS SISTEMAS OPERACIONAIS FACILITAM A INTERAÇÃO ENTRE USUÁRIOS E DISPOSITIVOS
+
+1 - DRIVERS DE DISPOSITIVOS:
+Os SO incluem drivers de dispositivos que atuam como interfaces entre o SO e os dispositivos de E/S. Esses drivers traduzem comandos e solicitações do SO para instruções específicas compreendidas pelo hardware do dispositivo.
+
+2 - PADRONIZAÇÃO DE INTERFACES:
+Os SO estabelecem padrões e interfaces padronizadas para diferentes tipos de dispositivos de E/S. Isso permite que desenvolvedores de software escrevam app sem se preocupar com as peculiaridades específicas de cada dispositivo, promovendo a portabilidade e interoperabilidade.
+
+3 -  ABSTRAÇÃO DE HARDWARE: 
+Os SO oferecem uma camada de abstração que oculta os detalhes complexos dos dispositivos de E/s. Isso permite que os usuários e desenvolvedores interajam com os dispositivos de forma mais simples, sem a necessidade de entender completamente a complexidade do hardware subjacente.
+
+4 - GERENCIAMENTO DE FILAS DE E/S:
+Em sistemas multitarefas, os SO mantêm filas de E/S para garantir que as operações de entrada e saída sejam tratadas de maneira eficiente e justa entre os diversos processos concorrentes.
+
+5 - CONFIGURAÇÃO E GERENCIAMENTO:
+Os SO oferecem ferramentas e utilitários para configurar e gerenciar dispositivos de E/S. Os usuários podem ajustar configurações, instalar ou desinstalar drivers e diagnosticar problemas por meio de interfaces gráficas ou de linha de comando.
+
+6 - CONTROLE DE CONCORRÊNCIA:
+Em ambientes multitarefa, os SO gerenciam o acesso concorrente aos dispositivos de E/S para evitar conflitos entre processos. Mecanismos como semáforos e mutexes são usados para coordenar o acesso concorrente.
+
+7 - TRATAMENTO DE INTERRUPÇÕES: 
+Os SO são responsáveis por gerenciar interrupções geradas por dispositivos de E/S. Quando um dispositivo precisa de atenção imediata, ele envia uma interrupção ao SO, que trata essa interrupção e toma as medidas necessárias.
+
+QUAL É O PAPEL DO DRIVER DE UM DISPOSITIVO?
+
+1 - TRADUÇÃO DE COMANDOS:
+Os drivers traduzem comandos e solicitações do SO para instruções específicas compreendidas pelo hardware do dispositivo. Isso inclui operações como leitura, gravação, inicialização e controle do dispositivo.
+
+2 - FORNECIMENTO DE INTERFACES PADRÃO:
+Os drivers fornecem interfaces padronizadas para que os app possam interagir com o dispositivo, independentemente das peculiaridades do hardware subjacente. Isso facilita o desenvolvimento de software, pois os programadores podem usar APIs ou chamadas de sistema consistentes.
+
+3 - GERENCIAMENTO DE RECURSOS:
+Os drivers gerenciam os recursos do dispositivo, alocando e liberando memória, controlando interrupções e coordenando o acesso concorrente a recursos compartilhados. Isso é crucial em ambientes multitarefa, onde vários processos ou app podem estar tentando acessar o mesmo dispositivo simultaneamente.
+
+4 - CONFIGURAÇÃO INICIAL:
+Os drivers realizam a configuração inicial do dispositivo durante o processo de inicialização do SO. Isso pode incluir a definição de parâmetros, configuração de modos de operação e a inicialização de componentes específicos.
+
+5 - MANUSEIO DE ERROS:
+Os drivers lidam com situações de erro, relatórios de falhas e recuperação de erro. Isso inclui a capacidade de reiniciar o dispositivo ou informar ao SO e aplicativos quando ocorrem falhas.
+
+6 - ATUALIZAÇÃO E COMPATIBILIDADE:
+Os fabricantes de hardware podem lançar atualizações de drivers para corrigir bugs, melhorar o desempenho ou adicionar suporte para novas funcionalidades. Manter os drivers atualizados é importante para garantir a estabilidade e a compatibilidade do sistema.
+
+
+
+SISTEMAS DE ARQUIVOS
+É responsável por gerenciar como os dados são armazenados, organizados e recuperados em dispositivos de armazenamento. 
+O sistema de arquivos fornece uma estrutura hierárquica para organizar os dados em diretórios e subdiretórios, permitindo que os usuários e app localizem, acessem e manipulem informações de maneira eficiente.
+
+IMPORTÂNCIA DO SISTEMA DE ARQUIVOS
+
+1 - ORGANIZAÇÃO E ESTRUTURAÇÃO:
+O sistema de arquivos organiza dados de maneira hierárquica, proporcionando uma estrutura lógica para os usuáiros e app. Isso facilita a loxalização e a organização dos arquivos, melhorando a eficiência no uso do armazenamento.
+
+2 - ACESSO EFICIENTE:
+Um sistema de arquivos eficiente permite que os usuários acessem rapidamente os arquivos necessários. A estrutura hierárquica e os métodos de alocação de espaço em disco contribuem para um acesso eficiente aos dados.
+
+3 - COMPATIBILIDADE:
+Sistemas de arquivos são projetados para serem compatíveis com diferentes tipos de arquivos e aplicativos. Eles fornecem uma camada de abstração que permite que os aplicativos acessem dados de maneira uniforme, independentemente do formato físico de armazenamento.
+
+4 - SEGURANÇA E CONTROLE DE ACESSO:
+O sistema de arquivos incorpora mecanismos de segurança, como permissões de acesso, para proteger os dados contra acessos não autorizados. Isso é crucial para garantir a confidencialidade e a integridade das informações armazenadas.
+
+5 - GESTÃO DE ESPAÇO EM DISCO:
+O sistema de arquivos gerencia eficientemente o espaço disponível em disco, alocando e liberando espaço conforme necessário. Isso evita o desperdício de espaço e otimiza a capacidade de armazenamento.
+
+6 - RECUPERAÇÃO DE DADOOS:
+Em casa de falhas ou erros, os sistemas de arquivos geralmente incluem mecanismos de recuperação que ajudam a restaurar dados perdidos ou corrompidos.
+
+7 - COMPATIBILIDADE ENTRE SO: 
+Sistemas de arquivos também desempenham um papel na compatibilidade entre diferentes SO. Existem padrões amplamente aceitos que permitem a transferência de dados entre sistemas diferentes.
+
+EM RESUMO, O SISTEMA DE ARQUIVOS É ESSENCIAL PARA A EFICIÊNCIA OPERACIONAL DE UM SO, GARANTINDO QUE OS DADOS SEJAM ARMAZENADOS E RECUPERADOS DE MANEIRA ORGANIZADA, SEGURA E EFICIENTE.
+
+FUNÇÕES DO SISTEMA DE ARQUIVO
+
+1 - ORGANIZAR DADOS:
+Estrutura hierárquica para organizar dados em diretórios e subdiretórios, semelhante a uma árvore, com diretórios representando ramos e os arquivos representando as folhas. Essa estrutura permite a categorização lógica e a fácil localização de dados relacionados.
+
+2 - ARMAZENAR DADOS:
+Ele gerencia como os dados são armazenados fisicamente em dispositivos de armazenamento. Mas também define métodos de alocação de espaço em disco para armazenar arquivos de maneira eficiente, garantindo o uso adequado do  espaço disponível.
+
+3 - RECUPERAR DADOS:
+É feito por meio de operações de leitura, que buscam os dados necessários no local correto do armazenamento. Utiliza métodos de indexação e estruturas de diretórios para localizar rapidamente a posição física dos dados.
+
+4 - GESTÃO DE ACESSO:
+Determina quem pode ler, gravar ou executar determinados arquivos ou diretórios. Implementando permissões de acesso para garantir a segurança e a integridade dos dados, evitando acesso não autorizado.
+
+5 - ABSTRAÇÃO DE HARDWARE:
+Permite que os aplcativos acessem dados de maneira uniforme, independentemente do tipo específico de dispositivo de armazenamento.
+
+6 - OPERAÇÕES BÁSICAS:
+Facilita operações básicas, como criação, cópia, movimentação e exclusão de arquivos e diretórios. Permite a manipulação de dados por meio de operações específicas, simplificando a interação do usuário com o sistema de armazenamento.
+
+ORGANIZAÇÃO DE SISTEMAS DE ARQUIVOS:
+
+DIRETÓRIOS (Pastas):
+- estrutura que contém informações sobre arquivos e outros diretórios;
+- servem para agrupar e organizar arquivos relacionados;
+- pode conter arquivos e subdiretórios;
+
+SUBDIRETÓRIOS:
+- é um diretório que está dentro de outro diretório;
+- a hierarquia é estabelecida quando você cria um diretório dentro de outro, formando uma estrutura de árvore;
+- a árvore de diretórios começa com um diretório raiz e se ramifica em subdiretórios conforme necessário.
+
+CAMINHO (Path):
+- cada diretório ou arquivo é identificado por um caminho;
+- é a descrição da localização de um arquivo ou diretório na árvore de diretórios;
+- um caminho absoluto começa do diretório raiz, enquanto um caminho relativo refere-se à localização em relação ao diretório atual.
+
+BENEFÍCIOS DA ORGANIZAÇÃO HIERÁRQUICA:
+- Facilita a localização de arquivos;
+- Permite a organização temática ou funcional dos dados;
+- Simplifica a gestão e manutenção dos arquivos.
+
+ORGANIZAÇÃO EM DIFERENTES SO’s
+- WINDOWS:
+- O diretório raiz é identificado por uma letra de unidade (exemplo, C:);
+- Os diretórios são separados por barra invertida \;
+
+- LINUX:
+- O diretório raiz é simplesmente denominado “/”;
+- Os diretórios são separados por barrar /;
+- Linux é case-sensitive, então “Documents” e “documents” seriam diretórios distintos.
+
+- macOS:
+- Similar ao Linux devido à herança do Unix, o diretório raiz é denominado “/”;
+- Os diretórios são separados por barra / ;
+
+TIPOS DE SISTEMAS DE ARQUIVOS:
+
+FAT (File Allocation Table):
+Usa uma tabela de alocação de arquivos para gerenciar a localização dos dados no disco. Conhecido por sua simplicidade e eficiência. Compatibilidade: amplamente suportado por vários SO e dispositivos, geralmente usado em USB, cartões de memória...Limitações: tamanho máximo de arquivos e partições e não oferece suporte a permissões de arquivos e pastas.
+
+NTFS (New Technology File System):
+Oferece recursos avançados, como compressão, criptografia e cotas de disco. Suporte a metadados avançados para uma organização mais eficiente dos dados. Segurança e Permissões: sistema de controle de acesso avançado, permitindo permissões granulados e suporta criptografia de arquivos e pastas. Recuperação de Falhas: mantém uma cópia de sua tabela de arquivos mestres (MFT) para recuperação em caso de corrupção.
+
+Ext4 (Extended File System 4 - Linux):
+Projetado para melhorar o desempenho em relação ao ext3. Suporta sistemas de arquivos de até 1 exabyte e arquivos individuais de até 16 terabytes. Journaling: usa journaling para aumentar a confiabilidade e a recuperação em caso de falhas do sistema. Registra transações antes de executá-las, minimizando o risco de corrupções de dados. Compatibilidade: oferece suporte à compatibilidade com ext2 e ext3, facilitando a migração.
+
+HFS+ (Hierarchical File System Plus - macOS):
+Usa metadados estendidos para armazenar informações adicionais sobre arquivos. Suporta atributos estendidos, como marcação de arquivos e informações sobre a criação do arquivo. Journaled: implementa journaling para maior confiabilidade e recuperação em caso de falhas. Compatibilidade: compatível com versões anteriores do HFS.
+
+IMPORTÂNCIA DO CONTROLE DE PERMISSÕES:
+- Proteção contra acesso não autorizado;
+- Confidencialidade dos Daods;
+- Integridade dos Dados;
+- Segurança em ambientes compartilhados;
+- Controle de acesso baseado em funções;
+- Prevenção contra ataques internos;
+- Auditoria e conformidade;
+- Evita a exclusão acidental;
+
+CONFIGURANDO PERMISSÕES:
+- UNIX/ LINUX:
+Notação Octal: 
+	- 4 leitura
+	- 2 gravação
+	- 1 execução
+A soma desses valores resulta nas permissões desejadas.
+
+- WINDOWS:
+Botão direito no arquivo ou pasta, vá para propriedades e na guia segurança você pode adicionar, remover ou modificar permissões para usuários e grupos;
+As permissões incluem “Controle Total”, “Leitura”, “Gravação” e “Execução”.
+
+ESTRATÉGIAS DE BACKUP:
+- BACKUP COMPLETO:
+Cria uma cópia completa de todos os dados selecionados. Vantagens: Restauração rápida, simplicidade e facilidade de implementação. Desvantagens: Consumo significativo de espaço de armazenamento e uso mais intensivo de recursos durante o backup. Estratégia: adequado para conjuntos de dados menores, quando o espaço de armazenamento não é uma preocupação primária e a restauração rápida é crítica.
+
+- BACKUP INCREMENTAL: 
+Captura apenas os dados que foram alterados desde o último backup (seja completo ou incremental). Vantagens: Economiza espaço de armazenamento, já que apenas as alterações são registradas. Desvantagens: A restauração pode ser mais demorada, pois é necessário recuperar o último backup completo e todos os incrementais subsequentes. Estratégia: útil quando o espaço de armazenamento é uma consideração crucial e a restauração pode demorar um pouco mais.
+
+- BACKUP DIFERENCIAL:
+Captura apenas os dados que foram alterados desde o último backup completo. Vantagens: Restauração mais rápida do que os backups incrementais. Uso moderado de espaço de armazenamento em comparação com o backup completo. Desvantagens: Consume mais espaço do que os backups incrementais. Estratégia: oferece um equilíbrio entre economia de espaço e tempo de restauração.
