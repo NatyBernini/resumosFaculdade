@@ -1,0 +1,89 @@
+ESTRUTURA DE DADOS - 1 ETAPA
+
+TIPOS ABSTRATOS DE DADOS
+
+- Dados: abstrações da realidade, para qual se conhece um modelo conceitual(físico-matemático), que permite transformá-los numa informação útil;
+- Processamento: sequência finita e organizada de operações sobre os dados;
+- Informação: resultado do processamento dos dados, gerada como saída;
+
+Um tipo de dado refere-se ao conjunto de valores a que uma constante pertence, ou que podem ser assumidos por uma variável ou expressão, ou que podem ser retornados por uma função. Também pode ser visto como um modelo matemático acompanhado das operações definidas sobre o modelo, independente de qualquer linguagem de programação.
+Exemplo: conjunto dos números inteiros acompanhado das operações aritméticas fundamentais.
+
+TAD = Estrutura de Dados + Operações
+
+Exemplos: Lista lineares, filas, pilhas e árvores
+
+LISTAS LINEARES
+
+Sequência de n elementos de um tipo de dado. Elas são muito úteis onde o número de elementos não é conhecido, a priori.
+
+- Para criar um TAD lista, é necessário definir um conjunto de operações sobre os objetos do tipo Lista;
+- O conjunto de operações a ser definido depende de cada aplicação, não existindo um conjunto de operações que seja adequado a todas as aplicações;
+
+Implementações:
+- Implementação Sequencial: através de vetores alocados estaticamente (durante a compilação) ou dinamicamente (durante a execução);
+Vantagens: 
+- Acesso direto a qualquer elemento;
+- Implementação mais simples;
+
+Desvantagens:
+- Inserção ou exclusão de um elemento no meio da lista implica na movimentação de todos os elementos que o sucedem;
+- A lista não pode crescer acima da capacidade do tamanho do vetor estático;
+- A lista pode crescer acima do tamanho do vetor dinâmico, mas esse redimensionamento do vetor pode requerer a movimentação de todos os itens;
+
+- Implementação encadeada: através de uma lista encadeada por meio de ponteiros (alocação dinâmica);
+Vantagens: 
+- A lista pode crescer à vontade, até o limite da memória;
+- Facilidade de inserção/remoção de elementos nos extremos da lista.
+
+Desvantagens:
+- Dificuldade de acesso. Para acessar um elemento deve-se percorrer a lista do início até chegar ao elemento;
+- Maior consumo de memória, pois cada elemento contém um ponteiro para o próximo elemento. Todavia, esse consumo extra pesa relativamente menos, à medida que o tamanho do registro aumenta;
+- Implementação um pouco mais difícil;
+
+LISTA ENCADEADA (por ponteiro)
+
+É uma sequência de registros (células), onde cada célula contém um objeto de determinado tipo e uma referência (apontador) para a próxima célula.
+
+- A última célula aponta para NULL;
+- Permite utilizar posições não contíguas de memória;
+
+Implementação:
+- Há uma célula cabeça para simplificar as operações sobre a lista;
+- Não há limite máximo para o número de elementos;
+- O limite é a capacidade de memória;
+- É possível inserir e retirar elementos sem necessidade de deslocar os itens seguintes da lista.
+
+LISTA DUPLAMENTE ENCADEADA
+É uma lista encadeada que possui dois ponteiros, um para o próximo elemento da lista e outro para o anterior.
+
+- O ponteiro anterior facilita a execução das operações, pois a lista pode ser percorrida em qualquer direção;
+
+FILA (Queue)
+
+É um TAD derivado do TAD lista linear, na qual os elementos são inseridos em um extremo e retirados no outros extremo da lista.
+
+- O primeiro elemento a entrar na fila é sempre o primeiro a deixá-la, ou seja, fila é uma lista FIFO (First In First Out).
+
+- São utilizadas quando desejamos processar itens de acordo com a ordem “Primeiro-que-chega,-primeiro-atendido”.
+
+- Sistemas operacionais utilizam filas para regular a ordem na qual tarefas devem receber processamento e recursos devem ser alocados a processos.
+
+Implementação:
+- Vetor (sequencial):
+Os elementos são inseridos no final e removidos no início, sem movimentar os demais uma posição para frente;
+Usa-se um índice (variável inteira) para marcar o início da fila. A cada remoção o íncide é incrementado;
+
+- Lista Encadeada (alocação dinâmica):
+É uma lista encadeada simplificada, pois a inserção e remoção ocorrem sempre da mesma forma;
+Possui somente um ponteiro para o próximo elemento da lista;
+
+ANOTAÇÕES AULAS PRÁTICAS
+
+// PONTEIROS
+- Para acessar o endereço de memória do ponteiro:  a;
+- Para acessar o valor do ponteiro: *a; 
+- Para acessar o endereço de memória de uma variável: &a;
+
+// TAD
+Não há TAD sem uma estrutura de dados com as suas operações, ou seja, para existir um TAD é obrigatório a presença desses dois elementos.
